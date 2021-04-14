@@ -1,4 +1,4 @@
-describe('Example', () => {
+describe('First test', () => {
   beforeAll(async () => {
     await device.launchApp();
   });
@@ -7,17 +7,17 @@ describe('Example', () => {
     await device.reloadReactNative();
   });
 
-  it('should have welcome screen', async () => {
-    await expect(element(by.id('welcome'))).toBeVisible();
+  it('should have hello text', async () => {
+    await expect(element(by.id('welcomeText'))).toBeVisible();
   });
 
-  it('should show hello screen after tap', async () => {
-    await element(by.id('hello_button')).tap();
-    await expect(element(by.text('Hello!!!'))).toBeVisible();
+  it('It should show 1 after one tap', async () => {
+    await element(by.id('button1')).tap();
+    await expect(element(by.id('buttText'))).toHaveText("1");
   });
-
-  it('should show world screen after tap', async () => {
-    await element(by.id('world_button')).tap();
-    await expect(element(by.text('World!!!'))).toBeVisible();
+  it('It should show 2 after two taps', async () => {
+    await element(by.id('button1')).tap();
+    await element(by.id('button1')).tap();
+    await expect(element(by.id('buttText'))).toHaveText("2");
   });
 });
