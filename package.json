@@ -9,7 +9,7 @@
     "build:ios": "react-native bundle --entry-file='index.js' --bundle-output='./ios/main.jsbundle' --dev=false --platform='ios'",
     "test": "jest",
     "lint": "eslint .",
-    "testit":"detox build -c ios.sim.debug && detox test -c ios.sim.debug"
+    "testit": "detox build -c ios.sim.debug && detox test -c ios.sim.debug"
   },
   "dependencies": {
     "@react-navigation/bottom-tabs": "^5.11.9",
@@ -22,7 +22,8 @@
     "react-native-screens": "^3.1.1",
     "react-redux": "^7.2.3",
     "redux": "^4.0.5",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "websocket": "^1.0.34"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
