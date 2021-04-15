@@ -1,3 +1,6 @@
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
 describe('First test', () => {
   beforeAll(async () => {
     await device.launchApp();
@@ -7,17 +10,22 @@ describe('First test', () => {
     await device.reloadReactNative();
   });
 
-  it('should have hello text', async () => {
-    await expect(element(by.id('welcomeText'))).toBeVisible();
+  it('should have login text', async () => {
+    await expect(element(by.text('Please log in'))).toBeVisible();
   });
 
-  it('It should show 1 after one tap', async () => {
-    await element(by.id('button1')).tap();
-    await expect(element(by.id('buttText'))).toHaveText("1");
+  it('It should login with Nikita/babcia2', async () => {
+    await element(by.id('loginField')).typeText('Nikita');
+    await element(by.id('passwordField')).typeText('babcia2');
+    await element(by.id('loginButton')).tap();
+    await sleep(2000);
+    await expect(element(by.id('mainHelloText'))).toBeVisible();
   });
-  it('It should show 2 after two taps', async () => {
-    await element(by.id('button1')).tap();
-    await element(by.id('button1')).tap();
-    await expect(element(by.id('buttText'))).toHaveText("2");
+  it('It should not login with wrong/wrong', async () => {
+    await element(by.id('loginField')).typeText('bba');
+    await element(by.id('passwordField')).typeText('bba');
+    await element(by.id('loginButton')).tap();
+    await sleep(2000);
+    await expect(element(by.id('mainHelloText'))).toBeNotVisible();
   });
 });
